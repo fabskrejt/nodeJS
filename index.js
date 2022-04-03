@@ -4,7 +4,9 @@ const http = require('http')
 const hostname = '127.0.0.1'
 const port = 4000;
 
-const cors = (req,res) => {
+const users = [{ name: 'User1' }, { name: 'User2' }, { name: 'User3' },]
+
+const cors = (req, res) => {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Request-Method', '*');
@@ -24,7 +26,12 @@ const server = http.createServer((req, res) => {
 
     switch (req.url) {
         case '/users':
-            res.write(`[{"name": "Vova"}]`)
+            if (req.method === 'POST') {
+                users.push({ name: 'User4' })
+                res.write(JSON.stringify({success: true}))
+            } else {
+                res.write(JSON.stringify(users))
+            }
             break
         default:
             res.write('Page Not Found')
