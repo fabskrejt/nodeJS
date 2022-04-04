@@ -1,10 +1,10 @@
 
-const http = require('http')
+const http = require('http');
+const { getUsers, addUser } = require('./repository');
 
 const hostname = '127.0.0.1'
 const port = 4000;
 
-const users = [{ name: 'User1' }, { name: 'User2' }, { name: 'User3' },]
 
 const cors = (req, res) => {
 
@@ -27,10 +27,10 @@ const server = http.createServer((req, res) => {
     switch (req.url) {
         case '/users':
             if (req.method === 'POST') {
-                users.push({ name: 'User4' })
+                addUser('User4')
                 res.write(JSON.stringify({success: true}))
             } else {
-                res.write(JSON.stringify(users))
+                res.write(JSON.stringify(getUsers()))
             }
             break
         default:

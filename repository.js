@@ -7,3 +7,6 @@ const getUsers = () => {
 const addUser = (name) => {
     users.push({name})
 }
+
+exports.getUsers = getUsers
+exports.addUser = addUser
