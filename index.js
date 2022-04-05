@@ -1,6 +1,7 @@
 
 const http = require('http');
 const { getUsers, addUser } = require('./repository');
+const {usersController} = require('./usersController')
 
 const hostname = '127.0.0.1'
 const port = 4000;
@@ -26,12 +27,7 @@ const server = http.createServer((req, res) => {
 
     switch (req.url) {
         case '/users':
-            if (req.method === 'POST') {
-                addUser('User4')
-                res.write(JSON.stringify({success: true}))
-            } else {
-                res.write(JSON.stringify(getUsers()))
-            }
+            usersController(req, res)
             break
         default:
             res.write('Page Not Found')
