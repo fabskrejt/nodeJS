@@ -1,7 +1,16 @@
-const users = [{ name: 'User1' }, { name: 'User2' }, { name: 'User3' },]
+const fs = require('fs')
+
+//const users = [{ name: 'User1' }, { name: 'User2' }, { name: 'User3' },]
 
 const getUsers = () => {
-    return users
+
+fs.readFile('/Users/joe/test.txt', 'utf8' , (err, data) => {
+  if (err) {
+    console.error(err)
+    return
+  }
+  console.log(data)
+})
 }
 
 const addUser = (name) => {
