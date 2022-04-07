@@ -32,8 +32,6 @@ const server = http.createServer((req, res) => {
         default:
             res.write('Page Not Found')
     }
-
-    res.end()
 })
 
 server.listen(port, hostname, () => {
