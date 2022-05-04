@@ -31,6 +31,7 @@ const server = http.createServer((req, res) => {
             break
         default:
             res.write('Page Not Found')
+            res.end()
     }
 })
 

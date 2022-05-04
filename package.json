@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "start": "nodemon --inspect index.js localhost 4000"
   }
 }
